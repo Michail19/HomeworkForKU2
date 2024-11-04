@@ -2,7 +2,7 @@ import subprocess
 
 
 def get_commits(repo_path):
-    cmd = ['git', '-C', repo_path, 'log', '--pretty=format:%H|%ai|%an|%P']
+    cmd = ['git', '-C', repo_path, 'log', '--all', '--pretty=format:%H|%ai|%an|%P']
     result = subprocess.run(cmd, capture_output=True, text=True)
     if result.returncode != 0:
         raise Exception("Ошибка при получении коммитов из репозитория.")

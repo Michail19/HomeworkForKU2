@@ -11,7 +11,7 @@ def generate_dot_content(commits):
         dot_content.append(node_line)
 
         for dep in commit["dependencies"]:
-            edge_line = f'    "{commit["hash"]}" -> "{dep}";'
+            edge_line = f'    "{dep}" -> "{commit["hash"]}";'
             dot_content.append(edge_line)
 
     dot_content.append("}")
