@@ -4,12 +4,11 @@ from src.git_helper import get_commits
 
 class TestGitHelper(unittest.TestCase):
     def test_get_commits(self):
-        # Замените на путь к тестовому git-репозиторию
-        commits = get_commits('/path/to/test/repo')
+        commits = get_commits('D:\\Python\\HomeworkForKU2')
         self.assertIsInstance(commits, list)
         self.assertGreater(len(commits), 0)
         for commit in commits:
-            self.assertEqual(len(commit), 3)  # Проверяем, что у нас 3 поля
+            self.assertEqual(len(commit), 3)
 
 
 if __name__ == "__main__":
