@@ -1,7 +1,7 @@
 import os
 import subprocess
 
-from git_helper import get_commits
+from src.git_helper import get_commits
 
 
 def generate_dot_content(commits):

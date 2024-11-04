@@ -8,7 +8,7 @@ class TestGitHelper(unittest.TestCase):
         self.assertIsInstance(commits, list)
         self.assertGreater(len(commits), 0)
         for commit in commits:
-            self.assertEqual(len(commit), 3)
+            self.assertEqual(len(commit), 4)
 
 
 if __name__ == "__main__":
