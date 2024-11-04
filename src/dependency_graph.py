@@ -4,6 +4,20 @@ import subprocess
 from git_helper import get_commits
 
 
+def generate_dot_content(commits):
+    dot_content = ["digraph G {"]
+    for commit in commits:
+        node_line = f'    "{commit["hash"]}" [label="{commit["date"]} {commit["author"]}"];'
+        dot_content.append(node_line)
+
+        for dep in commit["dependencies"]:
+            edge_line = f'    "{commit["hash"]}" -> "{dep}";'
+            dot_content.append(edge_line)
+
+    dot_content.append("}")
+    return "\n".join(dot_content)
+
+
 class DependencyGraph:
     def __init__(self, graphviz_path, repo_path, output_path):
         self.graphviz_path = graphviz_path
@@ -13,21 +27,13 @@ class DependencyGraph:
 
     def build_graph(self):
         self.commits = get_commits(self.repo_path)
-        graph = "digraph G {\n"
 
-        for commit in self.commits:
-            commit_hash, commit_date, commit_author = commit
-            graph += f'    "{commit_hash}" [label="{commit_date}\\n{commit_author}"];\n'
+        dot_content = generate_dot_content(self.commits)
 
-        # Тут нужно добавить логику для транзитивных зависимостей
-        # Например, можно добавлять ребра между коммитами на основе их родительских коммитов
+        with open("graph.dot", "w") as f:
+            f.write(dot_content)
 
-        graph += "}\n"
-
-        with open('graph.dot', 'w') as f:
-            f.write(graph)
-
-        cmd = [self.graphviz_path, 'dot', '-Tpng', 'graph.dot', '-o', self.output_path]
+        cmd = [self.graphviz_path, "-Tpng", "graph.dot", "-o", self.output_path]
         subprocess.run(cmd)
 
     def run(self):
