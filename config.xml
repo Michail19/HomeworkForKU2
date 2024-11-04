@@ -1,0 +1,5 @@
+<config>
+    <graphviz_path>/path/to/graphviz</graphviz_path>
+    <repo_path>/path/to/git/repo</repo_path>
+    <output_path>/path/to/output.png</output_path>
+</config>
