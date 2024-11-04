@@ -18,10 +18,14 @@
 
 Все функции визуализатора зависимостей должны быть покрыты тестами
 
+# Результат юнит-тестов программы
+
+
+![2024-11-04 (1)](https://github.com/user-attachments/assets/7bb72e13-534c-4d63-9f94-58d70bc57782)
+![2024-11-04 (2)](https://github.com/user-attachments/assets/aeeb6b60-f263-49dc-8700-b90ceacb1910)
+![2024-11-04 (3)](https://github.com/user-attachments/assets/5dff310b-4345-4ca2-a21e-5e76519f5895)
+
+
 # Результат работы программы
 
-
-![2024-10-01 (4)](https://github.com/user-attachments/assets/ec30d46a-abef-421c-926b-2a52b8e247d6)
-![2024-10-01 (6)](https://github.com/user-attachments/assets/c9becf9a-68c7-4ebb-a6e7-ee985c1f7edb)
-![2024-10-01 (8)](https://github.com/user-attachments/assets/bcce919c-b9c0-4361-b1c9-72165b8d9b76)
 
