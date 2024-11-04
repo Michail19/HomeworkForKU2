@@ -1,6 +1,14 @@
-import subprocess
+import xml.etree.ElementTree as ET
 
-def get_commits(repo_path):
-    cmd = ['git', '-C', repo_path, 'log', '--pretty=format:%H|%ai|%an']
-    result = subprocess.run(cmd, capture_output=True, text=True)
-    return [line.split('|') for line in result.stdout.splitlines() if line]
+
+def load_config(config_path):
+    tree = ET.parse(config_path)
+    root = tree.getroot()
+
+    config = {
+        'graphviz_path': root.find('graphviz_path').text,
+        'repo_path': root.find('repo_path').text,
+        'output_path': root.find('output_path').text
+    }
+
+    return config
