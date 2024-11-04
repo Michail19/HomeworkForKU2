@@ -28,4 +28,5 @@
 
 # Результат работы программы
 
+![output](https://github.com/user-attachments/assets/202902ff-37ca-4a9b-befc-e1cdeed688d5)
 
