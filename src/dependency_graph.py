@@ -1,4 +1,7 @@
 import os
+import subprocess
+
+from git_helper import get_commits
 
 
 class DependencyGraph:
@@ -9,11 +12,9 @@ class DependencyGraph:
         self.commits = []
 
     def build_graph(self):
-        # Получаем коммиты из git
         self.commits = get_commits(self.repo_path)
         graph = "digraph G {\n"
 
-        # Добавляем узлы для каждого коммита
         for commit in self.commits:
             commit_hash, commit_date, commit_author = commit
             graph += f'    "{commit_hash}" [label="{commit_date}\\n{commit_author}"];\n'
@@ -23,11 +24,9 @@ class DependencyGraph:
 
         graph += "}\n"
 
-        # Сохраняем граф в файл
         with open('graph.dot', 'w') as f:
             f.write(graph)
 
-        # Визуализируем граф с помощью Graphviz
         cmd = [self.graphviz_path, 'dot', '-Tpng', 'graph.dot', '-o', self.output_path]
         subprocess.run(cmd)
 
